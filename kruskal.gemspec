@@ -8,8 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Kruskal::VERSION
   spec.authors       = ['Ronie Uliana']
   spec.email         = ['ronie.uliana@gmail.com']
-  spec.summary       = %q{Kruskal Minimum Spanning Tree algorithm in pure Ruby}
-  spec.homepage      = ''
+  spec.summary       = %q{Kruskal Minimum Spanning Tree algorithm}
+  spec.description   = %q{Graph Minimum Spanning Tree implementation using a variation of Kruskal algorithm. Intended to be used directly from command line or as a lib.}
+  spec.homepage      = 'http://github.com/ruliana/kruskal'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
