@@ -9,6 +9,7 @@ module Kruskal
     end
 
     def add(value = 0, source, target)
+      # Here is the full algorithm
       forest_source = find_forest_for(source)
       forest_target = find_forest_for(target)
       if forest_source.nil? && forest_target.nil?
