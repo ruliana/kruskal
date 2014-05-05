@@ -1,3 +1,5 @@
+require 'forwardable'
+
 module Kruskal
   class Tree
     extend Forwardable
