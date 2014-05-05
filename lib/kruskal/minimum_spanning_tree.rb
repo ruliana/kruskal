@@ -1,36 +1,40 @@
 module Kruskal
   class MinimumSpanningTree
-    def initialize
-      @index = ForestIndex.new
-    end
+    attr_accessor :forest
 
-    def forests
-      @index.forests
+    def initialize
+      @forest = Forest.new
     end
 
     def add(value = 0, source, target)
       # Here is the full algorithm
-      forest_source = find_forest_for(source)
-      forest_target = find_forest_for(target)
-      if forest_source.nil? && forest_target.nil?
-        new_forest(value, source, target)
-      elsif forest_source && forest_target.nil?
-        forest_source.add(value, source, target)
-      elsif forest_source.nil? && forest_target
-        forest_target.add(value, source, target)
-      elsif forest_source != forest_target
-        forest_source.merge!(forest_target)
-        forest_source.add(value, source, target)
+      tree_source = find_tree_for(source)
+      tree_target = find_tree_for(target)
+      if tree_source.nil? && tree_target.nil?
+        new_tree(value, source, target)
+      elsif tree_source && tree_target.nil?
+        tree_source.add(value, source, target)
+      elsif tree_source.nil? && tree_target
+        tree_target.add(value, source, target)
+      elsif tree_source != tree_target
+        tree_source.merge!(tree_target)
+        tree_source.add(value, source, target)
+      end
+    end
+
+    def run(data)
+      data.each do |(value, source, target)|
+        add(value, source, target)
       end
     end
 
     private
-    def find_forest_for(node)
-      @index[node]
+    def find_tree_for(node)
+      @forest.find_tree_for(node)
     end
 
-    def new_forest(value, source, target)
-      @index.new_forest(value, source, target)
+    def new_tree(value, source, target)
+      @forest.new_tree(value, source, target)
     end
   end
 end
