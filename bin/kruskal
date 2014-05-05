@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require 'kruskal'
+
+kruskal = Kruskal::MinimumSpanningTree.new
+reader = Kruskal::JsonIO.new(ARGF)
+
+kruskal.run(reader)
+
+writer = Kruskal::JsonIO.new(STDOUT)
+kruskal.forest.each do |tree|
+  tree.each do |relation|
+    writer << relation
+  end
+end

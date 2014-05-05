@@ -23,8 +23,8 @@ module Kruskal
     end
 
     def run(data)
-      data.each do |(value, source, target)|
-        add(value, source, target)
+      data.each do |relation|
+        add(*relation)
       end
     end
 
