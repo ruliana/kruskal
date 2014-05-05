@@ -6,20 +6,21 @@ module Kruskal
       @trees = {}
     end
 
+    def index(node, tree)
+      @trees[node] = tree
+      @cached_to_a = nil
+    end
+
     def new_tree(value = 0, source, target)
       Tree.new(self, [[value, source, target]])
     end
 
     def to_a
-      @trees.values.uniq
+      @cached_to_a ||= @trees.values.uniq
     end
 
     def find_tree_for(node)
       @trees[node]
-    end
-
-    def index(node, tree)
-      @trees[node] = tree
     end
 
     def [](position)
